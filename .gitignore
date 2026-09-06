@@ -1,0 +1,32 @@
+# Secrets and local env
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Temporary audio and search results (keep directory)
+backend/storage/*
+!backend/storage/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log

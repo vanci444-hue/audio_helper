@@ -1,0 +1,35 @@
+:root {
+  color: #1a1a1a;
+  background: #f4f1ea;
+  font-family: "Songti SC", "Source Han Serif SC", "Noto Serif SC", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  max-width: 40rem;
+  margin: 12vh auto;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+p {
+  line-height: 1.7;
+  color: #333;
+}
+
+.note {
+  color: #666;
+  font-size: 0.95rem;
+}
