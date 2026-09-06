@@ -1,0 +1,9 @@
+from datetime import timedelta
+
+
+MAX_AUDIO_BYTES = 5 * 1024 * 1024
+MIN_AUDIO_SECONDS = 1.0
+MAX_AUDIO_SECONDS = 60.0
+AUDIO_TTL = timedelta(hours=24)
+AUDIO_PROBE_TIMEOUT_SECONDS = 8
+ALLOWED_AUDIO_CODECS = {"opus"}
