@@ -10,3 +10,12 @@ ALLOWED_AUDIO_CODECS = {"opus"}
 ASR_MAX_ENCODED_BYTES = 10 * 1024 * 1024
 ASR_UPSTREAM_TIMEOUT_SECONDS = 20
 ASR_AUDIO_MIME = "audio/webm"
+EXTRACT_UPSTREAM_TIMEOUT_SECONDS = 15
+EXTRACT_MAX_TOKENS = 800
+DEFAULT_MEETUP_CATEGORY = "咖啡店"
+CATEGORY_ALIASES = {
+    "咖啡": "咖啡店",
+    "喝咖啡": "咖啡店",
+    "咖啡馆": "咖啡店",
+    "咖啡厅": "咖啡店",
+}
