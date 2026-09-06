@@ -20,6 +20,19 @@ class UploadResponse(BaseModel):
     data: UploadData
 
 
+class AsrRequest(BaseModel):
+    audio_id: str = Field(min_length=1, examples=["aud_01hzx"])
+
+
+class AsrData(BaseModel):
+    text: str
+
+
+class AsrResponse(BaseModel):
+    request_id: str
+    data: AsrData
+
+
 class ErrorDetail(BaseModel):
     code: str
     message: str
