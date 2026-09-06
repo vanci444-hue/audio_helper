@@ -7,6 +7,8 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import JSONResponse
 from starlette.responses import Response
 
+from api.asr import router as asr_router
+from api.extract import router as extract_router
 from api.health import router as health_router
 from api.upload import router as upload_router
 from config import settings
@@ -15,6 +17,8 @@ from schemas import AppError
 app = FastAPI(title="语音约碰面地点", version="0.1.0")
 app.include_router(health_router)
 app.include_router(upload_router)
+app.include_router(asr_router)
+app.include_router(extract_router)
 
 
 def custom_openapi():
@@ -62,8 +66,13 @@ def _request_id(request: Request) -> str:
 
 
 def _stage_from_path(path: str) -> str:
-    if path.rstrip("/").endswith("/upload"):
+    normalized = path.rstrip("/")
+    if normalized.endswith("/upload"):
         return "upload"
+    if normalized.endswith("/asr"):
+        return "asr"
+    if normalized.endswith("/extract"):
+        return "extract"
     return "request"
 
 
@@ -78,4 +87,8 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
     message = "请求缺少必要字段或字段类型不正确。"
     if stage == "upload":
         message = "请上传字段名为 file 的录音文件。"
+    elif stage == "asr":
+        message = "请提供 JSON 字段 audio_id。"
+    elif stage == "extract":
+        message = "请提供 JSON 字段 text 和 city。"
     return AppError(422, "VALIDATION_ERROR", message, stage).to_response(_request_id(request))
